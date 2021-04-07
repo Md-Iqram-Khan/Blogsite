@@ -1,0 +1,83 @@
+<%- include('../../partials/expHead.ejs') %> 
+    <div class="container my-5">
+        <div class="row">
+         <div class="col-md-11 offset-md-1 justify-content-center align-items-center">
+            <section class="mb-5" id="nav-filter">
+                
+                <a href="/explorer?filter=latest" class="btn <%= filter==='latest'? 'btn-outline-danger' : 'btn-outline-success' %> " >Latest</a>
+                
+                <a href="/explorer?filter=week" class="btn <%= filter==='week'? 'btn-outline-danger' : 'btn-outline-success' %> " >Week</a>
+                
+                <a href="/explorer?filter=month" class="btn <%= filter==='month'? 'btn-outline-danger' : 'btn-outline-success' %> " >Month</a>
+
+                  <a href="/explorer?filter=all" class="btn <%= filter==='all'? 'btn-outline-danger' : 'btn-outline-success' %> " >All</a>
+                
+            </section>
+            
+                <section>
+                   <% if (posts.length === 0) { %> 
+                            <p class="text-center text-muted">There is nothing to show</p>
+                    <% }else { %> 
+                        <% for (let post of posts) {%> 
+                            <div class="card card-body mb-3">
+                                <% if (post.thumbnail) { %> 
+                                 <img src=" <%= post.thumbnail %> "  class="img-fluid mb-2">
+                            <% }%> 
+                            <a href="/explorer/<%= post._id %>  " style="color:#222">
+                                <h5><%= post.title %> </h5>
+                                <p class="mb-4"> <%= truncate(post.body) %> </p>
+                            </a>
+                            <div class="d-flex">
+                             <small>
+                                   <%= moment(post.createdAt) %>,
+                                   <%= post.readTime %>   
+                               </small>
+
+                                 <% if(user) {%>
+                                        <span  class="ml-auto bookmark" data-post="<%= posts._id %> ">
+                                        <% if (bookmarks.includes(posts._id)) { %> 
+                                            <i class="fas fa-bookmark"></i>
+                                        <% } else {%> 
+                                            <i class="far fa-bookmark"></i>
+                                            </span>
+                                        <% } %> 
+                                 <% } %>  
+                            </div>
+                            </div>
+                         <% } %> 
+                    <% } %> 
+                </section>
+                <% if(totalPage > 1){%> 
+                        <nav id='pagination'>
+                            <ul class="pagination">
+                                <li class="page-item <%= currentPage === 1 ? 'disabled' : ' ' %> ">
+                                    <a class=" page-link mr-1" href="<%=`/explorer?filter=${filter}&page=${currentPage - 1}`%> ">
+                                        Prev
+                                    </a>
+                                </li>
+
+                                <% for (let i=1; i<=totalPage; i++) {%> 
+                                 <li class="page-item <%= currentPage === i ? 'active' : ' ' %> ">
+                                    <a class="page-link mr-1" href="<%=`/explorer?filter=${filter}&page=${i}`%> ">
+                                        <%= i %> 
+                                    </a>
+                                </li>
+                                <% } %> 
+
+
+                                <li class="page-item <%= currentPage == totalPage ? 'disabled' : ' ' %> ">
+                                    <a class="page-link" href="<%=`/explorer?filter=${filter}&page=${currentPage + 1}`%> ">
+                                        Next
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    <% } %> 
+            </div>
+        </div>
+    </div>
+<%-  include('../../partials/footer.ejs') %> 
+<script src="/script/bookmarks.js"></script>
+</body>
+</html>
+

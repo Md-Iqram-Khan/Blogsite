@@ -1,0 +1,61 @@
+<%- include('../../partials/expHead.ejs') %> 
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card" style="width: 200px; ">
+                     <img src="<%= author.profilePics %>" class="card-img-top" style="height: 200px; ">
+           
+
+                  <div class="card-body">
+                       <P> Name: <strong><%= author.profile.name %> </strong> </P>
+                            <P>Title: <strong><%= author.profile.title %> </strong></P>
+                           <P> Bio: <span><%= author.profile.title %> </span></P>
+
+                        <div >
+                            <% if(author.profile.links.website){ %> 
+                                <span>
+                                    <a href="<%=author.profile.links.website%> ">
+                                        <i class="fab fa-internet-explorer"></i>
+                                    </a>
+                                </span>
+                                <% } %> 
+
+                                <% if(author.profile.links.facebook){ %> 
+                                <span>
+                                    <a href="<%=author.profile.links.facebook%> ">
+                                        <i class="fab fa-facebook-square"></i>
+                                    </a>
+                                </span>
+                                <% } %> 
+
+                                <% if(author.profile.links.github){ %> 
+                                <span>
+                                    <a href="<%=author.profile.links.github%> ">
+                                        <i class="fab fa-github-square"></i>
+                                    </a>
+                                </span>
+                                <% } %> 
+
+                                <% if(author.profile.links.twitter){ %> 
+                                <span>
+                                    <a href="<%=author.profile.links.twitter%> ">
+                                        <i class="fab fa-twitter-square"></i>
+                                    </a>
+                                </span>
+                                <% } %> 
+                        </div>
+
+                      <section>
+                        <p>Post Created By <%= author.profile.name %> :  </p>
+                        
+                    </section> 
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+<%-  include('../../partials/footer.ejs') %> 
+</body>
+</html>
+

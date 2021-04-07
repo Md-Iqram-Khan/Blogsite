@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  background: rgb(245, 245, 245);
+}
+
+.my-container {
+  min-height: 535px;
+}
+
+#nav-filter {
+  margin-left: 350px;
+}
+.pagination {
+  margin-left: 350px;
+}
+
+footer {
+  background: #343a40;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+}
