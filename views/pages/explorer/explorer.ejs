@@ -1,8 +1,10 @@
 <%- include('../../partials/expHead.ejs') %> 
-    <div class="container my-5">
+    <div class="container my-3">
         <div class="row">
-         <div class="col-md-11 offset-md-1 justify-content-center align-items-center">
-            <section class="mb-5" id="nav-filter">
+
+         <div class="col-md-6 offset-md-3">
+
+            <section class="mb-3" id="nav-filter">
                 
                 <a href="/explorer?filter=latest" class="btn <%= filter==='latest'? 'btn-outline-danger' : 'btn-outline-success' %> " >Latest</a>
                 
@@ -34,14 +36,15 @@
                                </small>
 
                                  <% if(user) {%>
-                                        <span  class="ml-auto bookmark" data-post="<%= posts._id %> ">
-                                        <% if (bookmarks.includes(posts._id)) { %> 
+                                        <span  class="ml-auto bookmark" data-post="<%= post._id %> ">
+                                        <% if (bookmarks.includes(post._id)) { %> 
                                             <i class="fas fa-bookmark"></i>
                                         <% } else {%> 
                                             <i class="far fa-bookmark"></i>
                                             </span>
                                         <% } %> 
                                  <% } %>  
+ 
                             </div>
                             </div>
                          <% } %> 

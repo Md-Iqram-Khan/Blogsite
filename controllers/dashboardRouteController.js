@@ -190,7 +190,7 @@ exports.bookmarksGetController = async (req, res, next) => {
 exports.commentsGetController = async (req, res, next) => {
   try {
     let profile = await Profile.findOne({ user: req.user._id });
-    let comments = await Comment.find({ post: { $in: profile.post } })
+    let comments = await Comment.find({ post: { $in: profile.posts } })
       .populate({
         path: "post",
         select: "title",
@@ -204,12 +204,11 @@ exports.commentsGetController = async (req, res, next) => {
         select: "username profilePics",
       });
 
-    res.json(comments);
-    // res.render("pages/dashboard/comments", {
-    //   title: "My Recent Comments",
-    //   flashMessage: Flash.getMessage(req),
-    //   comments,
-    // });
+    res.render("pages/dashboard/comments", {
+      title: "My Recent Comments",
+      flashMessage: Flash.getMessage(req),
+      comments,
+    });
   } catch (e) {
     next(e);
   }

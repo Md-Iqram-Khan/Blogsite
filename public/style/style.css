@@ -15,13 +15,23 @@ body {
   min-height: 535px;
 }
 
-#nav-filter {
-  margin-left: 350px;
-}
-.pagination {
-  margin-left: 350px;
+@media only screen and (max-width: 1350px) {
+  .author {
+    max-height: 475px;
+  }
 }
 
+@media only screen and (min-width: 600px) {
+  .my-post {
+    min-height: 565px;
+  }
+}
+
+@media only screen and (min-width: 1500px) {
+  .my-post {
+    min-height: 760px;
+  }
+}
 footer {
   background: #343a40;
   color: white;
