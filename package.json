@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app"
+    "start": "node app",
+    "dev": "nodemon app"
   },
   "keywords": [],
   "author": "",
@@ -27,5 +28,8 @@
     "morgan": "^1.10.0",
     "multer": "^1.4.2",
     "reading-time": "^1.2.1"
+  },
+  "engines": {
+    "node": "12.16.1"
   }
 }
